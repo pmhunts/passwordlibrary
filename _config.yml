@@ -1,0 +1,3 @@
+# Jekyll configuration file to exclude node_modules from processing
+exclude:
+  - node_modules

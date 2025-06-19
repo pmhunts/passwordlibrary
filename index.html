@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureVault Password Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="video-container">
+        <video autoplay muted loop id="background-video">
+            <source src="video.mp4" type="video/mp4">
+            <!-- Fallback background if video doesn't load -->
+            <div class="placeholder-video" style="background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);"></div>
+        </video>
+        <div class="overlay"></div>
+    </div>
+    
+    <!--
+    <header>
+        <h1>SecureVault</h1>
+        <p>Your Personal Password Manager</p>
+    </header>
+    -->
+    
+    <div class="container">
+        <!-- Login/Register Form -->
+        <div class="auth-container" id="authContainer">
+            <h2 id="authTitle">Log In</h2>
+            <form id="authForm">
+                <div class="input-group">
+                    <input type="text" id="username" required="required">
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" required="required">
+                    <label for="password">Password</label>
+                </div>
+                <div class="input-group" id="confirmPasswordGroup" style="display: none;">
+                    <input type="password" id="confirmPassword">
+                    <label for="confirmPassword">Confirm Password</label>
+                </div>
+                <button type="submit" id="authButton">Log In</button>
+                <div class="toggle-auth">
+                    <span id="authToggleText">Don't have an account?</span>
+                    <a href="#" id="authToggleLink">Sign up</a>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Password Manager -->
+        <div class="password-manager" id="passwordManager" style="display: none;">
+            <div class="user-info">
+                <p>Welcome, <span id="currentUser">User</span>!</p>
+                <button class="logout-btn" id="logoutBtn">Logout</button>
+            </div>
+            
+            <h2>Your Stored Passwords</h2>
+            
+            <div class="action-buttons">
+                <button id="addNewBtn">Add New Password</button>
+                <button id="exportBtn">Export Data</button>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search passwords...">
+            </div>
+            
+            <div id="passwordList" style="display: none;">
+                <table class="password-list">
+                    <thead>
+                        <tr>
+                            <th>Website</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Last Updated</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="passwordTableBody">
+                        <!-- Password entries will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="emptyState" class="empty-state">
+                <i>🔒</i>
+                <h3>No passwords stored yet</h3>
+                <p>Add your first password by clicking the "Add New Password" button above.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add/Edit Password Modal -->
+    <div class="modal" id="passwordModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add New Password</h3>
+                <button type="button" class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <form id="passwordForm">
+                <input type="hidden" id="passwordId">
+                <div class="form-row">
+                    <label for="website">Website/Application</label>
+                    <input type="text" id="website" required>
+                </div>
+                <div class="form-row">
+                    <label for="websiteUrl">URL (optional)</label>
+                    <input type="text" id="websiteUrl">
+                </div>
+                <div class="form-row">
+                    <label for="usernameField">Username/Email</label>
+                    <input type="text" id="usernameField" required>
+                </div>
+                <div class="form-row">
+                    <label for="passwordField">Password</label>
+                    <div class="password-input-group">
+                        <input type="password" id="passwordField" required>
+                        <button type="button" id="generatePassword">Generate Strong Password</button>
+                    </div>
+                    <div class="password-strength">
+                        <span id="strengthText">Strength: </span>
+                        <div class="strength-meter">
+                            <div id="strengthIndicator" style="width: 0%; background-color: #ccc;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="notes">Notes (optional)</label>
+                    <textarea id="notes"></textarea>
+                </div>
+                <button type="submit" id="savePasswordBtn">Save Password</button>
+            </form>
+        </div>
+    </div>
+    
+    <!--
+    <footer>
+        <p>&copy; 2025 SecureVault Password Manager</p>
+    </footer>
+    -->
+
+    <script src="script.js"></script>
+</body>
+</html>

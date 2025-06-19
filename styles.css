@@ -1,0 +1,484 @@
+/* Global Styles */
+:root {
+  --primary-color: #4285f4;
+  --primary-dark: #3367d6;
+  --primary-light: #8ab4f8;
+  --secondary-color: #34a853;
+  --danger-color: #ea4335;
+  --warning-color: #fbbc05;
+  --light-gray: #f5f5f5;
+  --medium-gray: #e0e0e0;
+  --dark-gray: #757575;
+  --text-color: #202124;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--light-gray);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Video Background */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+#background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  object-fit: cover;
+}
+
+.placeholder-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Header Styles */
+header {
+  background-color: rgba(66, 133, 244, 0.25); /* more transparent primary color */
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+  box-shadow: none;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  flex: 1;
+}
+
+/* Authentication Container */
+.auth-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.5s ease;
+  position: relative;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+/* Form Styles */
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid var(--medium-gray);
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.input-group label {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  font-size: 16px;
+  color: var(--dark-gray);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: var(--primary-color);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+}
+
+.toggle-auth {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.toggle-auth a {
+  color: var(--primary-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.toggle-auth a:hover {
+  text-decoration: underline;
+}
+
+/* Password Manager */
+.password-manager {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.5s ease;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background-color: transparent;
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+}
+
+.logout-btn:hover {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-bar {
+  margin-bottom: 1.5rem;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border 0.3s ease;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Password List Table */
+.password-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.password-list th,
+.password-list td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.password-list th {
+  background-color: var(--light-gray);
+  font-weight: 600;
+}
+
+.password-list tr:hover {
+  background-color: #f9f9f9;
+}
+
+.password-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.masked-password {
+  font-family: monospace;
+  letter-spacing: 2px;
+}
+
+.action-cell {
+  display: flex;
+  gap: 5px;
+}
+
+.action-cell button {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem 0;
+  color: var(--dark-gray);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.modal-header h3 {
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--dark-gray);
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: var(--danger-color);
+}
+
+#passwordForm {
+  padding: 1.5rem;
+}
+
+.form-row {
+  margin-bottom: 1.5rem;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--medium-gray);
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.password-input-group {
+  position: relative;
+}
+
+.password-generator {
+  margin-top: 10px;
+}
+
+#generatePassword {
+  background-color: var(--secondary-color);
+  width: 100%;
+}
+
+#generatePassword:hover {
+  background-color: #2a8644;
+}
+
+.password-strength {
+  margin-top: 10px;
+}
+
+.strength-meter {
+  height: 5px;
+  width: 100%;
+  background-color: var(--medium-gray);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+#strengthIndicator {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+#savePasswordBtn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-top: 2rem;
+  background-color: rgba(32, 33, 36, 0.25); /* more transparent dark color */
+  color: white;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .password-list {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .action-cell {
+    flex-direction: column;
+  }
+  
+  .modal-content {
+    width: 95%;
+  }
+}
+
+/* Additional Styles for Notes Textarea */
+textarea#notes {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Hover Effects for Interactive Elements */
+button, a, .close-modal {
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: translateY(1px);
+}
